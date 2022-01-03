@@ -458,12 +458,38 @@ let twoSum = function (numbers, target) {
     return obj;
 };
 
-console.log(twoSum([2, 7, 11, 15], 9));
-console.log(twoSum([2, 3, 4], 6));
-console.log(twoSum([-1, 0], -1));
-console.log(twoSum([0, 3, 4], 4));
-console.log(twoSum([2, 2, 4], 4));
-console.log(twoSum([-2, -2, 4], -4));
-console.log(twoSum([-3, 0, 3, 4, 90], 0));
-console.log(twoSum([0, 0, 3, 4], 0));
-console.log(twoSum([5, 25, 75], 100));
+// console.log(twoSum([2, 7, 11, 15], 9));
+// console.log(twoSum([2, 3, 4], 6));
+// console.log(twoSum([-1, 0], -1));
+// console.log(twoSum([0, 3, 4], 4));
+// console.log(twoSum([2, 2, 4], 4));
+// console.log(twoSum([-2, -2, 4], -4));
+// console.log(twoSum([-3, 0, 3, 4, 90], 0));
+// console.log(twoSum([0, 0, 3, 4], 0));
+// console.log(twoSum([5, 25, 75], 100));
+
+
+var restoreString = function (s, indices) {
+    let newArr = [];
+    for (let i = 0; i < indices.length; i++) {
+        newArr[indices[i]] = s[i];
+    }
+    return newArr.join("");
+
+    // let obj = {};
+    // for (let i = 0; i < indices.length; i++) {
+    //     obj[indices[i]] = s[i];
+    // }
+
+    // let str = "";
+
+    // for (const key in obj) {
+    //     str += obj[key];
+    // }
+
+    // return str;
+};
+
+
+console.log(restoreString("codeleet", [4, 5, 6, 7, 0, 2, 1, 3]));
+console.log(restoreString("abc", [0, 1, 2]));
