@@ -3,13 +3,18 @@
  */
 package leetcode;
 
+import java.util.Arrays;
+import java.util.HashMap;
+
 public class App {
 
     public static void main(String[] args) {
         int[] testArr = {4,5,6,7,0,2,1,3};
         int[] testArr2 = {0,1,2};
-        System.out.println(restoreString("codeleet",testArr ));
-        System.out.println(restoreString("abc",testArr2 ));
+//        System.out.println(restoreString("codeleet",testArr ));
+//        System.out.println(restoreString("abc",testArr2 ));
+        System.out.println(Arrays.toString(twoSum(testArr2 , 1)));
+        System.out.println(Arrays.toString(twoSum(testArr , 8)));
     }
 
     public static String restoreString (String s, int[] indices) {
@@ -19,4 +24,33 @@ public class App {
         }
         return new String(arr);
     }
+
+    public static int[] twoSum(int[] nums, int target) {
+
+        int[] arr = new int[2];
+
+//        for (int i = 0; i <= nums.length; i++) {
+//            for (int j = i+1; j < nums.length; j++) {
+//                if (nums[i] + nums[j] == target){
+//                    arr[0] = i;
+//                    arr[1] = j;
+//                    return arr;
+//                }
+//            }
+//        }
+
+        HashMap<Integer,Integer> map = new HashMap<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            if (!map.containsKey(target-nums[i])) {
+                map.put(nums[i] , i);
+            } else {
+                arr[0] = map.get(target-nums[i]);
+                    arr[1] = i;
+            }
+        }
+        
+        return arr;
+    }
+
 }
