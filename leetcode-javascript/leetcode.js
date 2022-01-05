@@ -491,5 +491,20 @@ var restoreString = function (s, indices) {
 };
 
 
-console.log(restoreString("codeleet", [4, 5, 6, 7, 0, 2, 1, 3]));
-console.log(restoreString("abc", [0, 1, 2]));
+// console.log(restoreString("codeleet", [4, 5, 6, 7, 0, 2, 1, 3]));
+// console.log(restoreString("abc", [0, 1, 2]));
+
+const minMovesToSeat = function (seats, students) {
+    seats.sort((a, b) => a - b);
+    students.sort((a, b) => a - b);
+    let sum = 0;
+    for (let i = 0; i < seats.length; i++) {
+        sum += Math.abs(students[i] - seats[i]);
+    }
+    return sum;
+};
+
+console.log(minMovesToSeat([3, 1, 5], [2, 7, 4]));
+console.log(minMovesToSeat([4, 1, 5, 9], [1, 3, 2, 6]));
+console.log(minMovesToSeat([2, 2, 6, 6], [1, 3, 2, 6]));
+console.log(minMovesToSeat([3, 20, 17, 2, 12, 15, 17, 4, 15, 20], [10, 13, 14, 15, 5, 2, 3, 14, 3, 18]));
