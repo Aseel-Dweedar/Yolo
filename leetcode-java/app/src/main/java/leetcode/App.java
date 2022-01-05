@@ -9,12 +9,18 @@ import java.util.HashMap;
 public class App {
 
     public static void main(String[] args) {
-        int[] testArr = {4,5,6,7,0,2,1,3};
-        int[] testArr2 = {0,1,2};
-//        System.out.println(restoreString("codeleet",testArr ));
-//        System.out.println(restoreString("abc",testArr2 ));
-        System.out.println(Arrays.toString(twoSum(testArr2 , 1)));
-        System.out.println(Arrays.toString(twoSum(testArr , 8)));
+        int[] arr1 = {4,5,6,7,0,2,1,3};
+        int[] arr2 = {0,1,2};
+//        System.out.println(restoreString("codeleet",arr1 ));
+//        System.out.println(restoreString("abc",arr2 ));
+//        System.out.println(Arrays.toString(twoSum(arr2 , 1)));
+//        System.out.println(Arrays.toString(twoSum(arr1 , 8)));
+        int[] arr3 = {1,3};
+        int[] arr4 = {2};
+        int[] arr5 = {1,2};
+        int[] arr6 = {3,4};
+//        System.out.println(findMedianSortedArrays(arr3,arr4));
+//        System.out.println(findMedianSortedArrays(arr5,arr6));
     }
 
     public static String restoreString (String s, int[] indices) {
@@ -52,5 +58,38 @@ public class App {
         
         return arr;
     }
+
+    public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int[] arr = new int[nums1.length+nums2.length];
+        int index1 = 0 ;
+        int index2 = 0 ;
+        for (int i = 0; i < nums1.length+nums2.length; i++) {
+            if (index1 >= nums1.length ) {
+                arr[i] = nums2[index2];
+                index2++;
+            } else if (index2 >= nums2.length) {
+                arr[i] = nums1[index1];
+                index1 ++;
+            } else {
+                if (nums1[index1] < nums2[index2]) {
+                    arr[i] = nums1[index1];
+                    index1 ++;
+                } else {
+                    arr[i] = nums2[index2];
+                    index2++;
+                }
+            }
+        }
+        if (arr.length % 2 == 0 ) {
+            double midPoint = (float) (arr[arr.length/2] + arr[arr.length/2 -1])/2;
+            return midPoint;
+        } else {
+            return  (arr[(int) Math.floor(arr.length/2)]);
+        }
+    }
+
+//    public static int minMovesToSeat(int[] seats, int[] students) {
+//
+//    }
 
 }
