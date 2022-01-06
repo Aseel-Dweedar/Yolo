@@ -62,13 +62,23 @@ const dup3 = (nums, k, t) => {
 
 const removeDuplicatesSortedArray = (nums) => {
 
+    // for (let i = 1; i < nums.length; i++) {
+    //     if (nums[i] === nums[i - 1]) {
+    //         nums.splice(i, 1)
+    //         i--;
+    //     }
+    // }
+    // return nums.length;
+
+    let idx = 1;
     for (let i = 1; i < nums.length; i++) {
-        if (nums[i] === nums[i - 1]) {
-            nums.splice(i, 1)
-            i--;
+
+        if (nums[i] != nums[i - 1]) {
+            nums[idx] = nums[i];
+            idx++;
         }
     }
-    return nums.length;
+    return idx;
 }
 
 
