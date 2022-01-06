@@ -21,6 +21,10 @@ public class App {
         int[] arr6 = {3,4};
 //        System.out.println(findMedianSortedArrays(arr3,arr4));
 //        System.out.println(findMedianSortedArrays(arr5,arr6));
+        int[] arr7 = {1,1,2};
+        int[] arr8 = {0,0,1,1,1,2,2,3,3,4};
+        System.out.println(removeDuplicates(arr7));
+        System.out.println(removeDuplicates(arr8));
     }
 
     public static String restoreString (String s, int[] indices) {
@@ -96,6 +100,19 @@ public class App {
             sum += Math.abs(students[i] - seats[i]);
         }
         return sum;
+    }
+
+    public static int removeDuplicates(int[] nums) {
+        int idx = 1 ;
+        for (int i = 1; i < nums.length; i++) {
+
+            if (nums[i] != nums[i-1]){
+                nums[idx] = nums[i];
+                idx++;
+            }
+        }
+        System.out.println(Arrays.toString(nums));
+        return idx;
     }
 
 }
