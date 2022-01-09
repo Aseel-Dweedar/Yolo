@@ -514,7 +514,21 @@ const minMovesToSeat = function (seats, students) {
     return sum;
 };
 
-console.log(minMovesToSeat([3, 1, 5], [2, 7, 4]));
-console.log(minMovesToSeat([4, 1, 5, 9], [1, 3, 2, 6]));
-console.log(minMovesToSeat([2, 2, 6, 6], [1, 3, 2, 6]));
-console.log(minMovesToSeat([3, 20, 17, 2, 12, 15, 17, 4, 15, 20], [10, 13, 14, 15, 5, 2, 3, 14, 3, 18]));
+// console.log(minMovesToSeat([3, 1, 5], [2, 7, 4]));
+// console.log(minMovesToSeat([4, 1, 5, 9], [1, 3, 2, 6]));
+// console.log(minMovesToSeat([2, 2, 6, 6], [1, 3, 2, 6]));
+// console.log(minMovesToSeat([3, 20, 17, 2, 12, 15, 17, 4, 15, 20], [10, 13, 14, 15, 5, 2, 3, 14, 3, 18]));
+
+
+const divideNumbers = (number, dividedBy) => {
+    let counter = 0
+    if (number >= dividedBy) {
+        counter++;
+        return counter += divideNumbers(number - dividedBy, dividedBy);
+    }
+    return counter;
+}
+
+console.log(divideNumbers(6, 3));
+console.log(divideNumbers(10, 2));
+console.log(divideNumbers(12, 3));

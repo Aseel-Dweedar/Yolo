@@ -27,8 +27,14 @@ public class App {
 //        System.out.println(removeDuplicates(arr8));
         int[] arr9 = {3,2,2,3};
         int[] arr10 = {0,1,2,2,3,0,4,2};
-        System.out.println(removeElement(arr9,3));
-        System.out.println(removeElement(arr10,2));
+//        System.out.println(removeElement(arr9,3));
+//        System.out.println(removeElement(arr10,2));
+        int[] arr11 = {4,5,6,7,0,1,2};
+        int[] arr12 = {4,5,6,7,0,1,2};
+        int[] arr13 = {1};
+        System.out.println(search(arr11, 0));
+        System.out.println(search(arr12, 3));
+        System.out.println(search(arr13, 0));
     }
 
     public static String restoreString (String s, int[] indices) {
@@ -124,5 +130,19 @@ public class App {
         return idx;
     }
 
+    public static int search(int[] nums, int target) {
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == target) {
+                return i;
+            }
+            if ( i+1 != nums.length) {
+                if (nums[i + 1] < nums[i] && (nums[i] < target || nums[nums.length - 1] < target || target < nums[i + 1])) {
+                    return -1;
+                }
+            }
+
+        }
+        return -1;
+    }
 
 }
