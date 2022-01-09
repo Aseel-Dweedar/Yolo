@@ -23,8 +23,12 @@ public class App {
 //        System.out.println(findMedianSortedArrays(arr5,arr6));
         int[] arr7 = {1,1,2};
         int[] arr8 = {0,0,1,1,1,2,2,3,3,4};
-        System.out.println(removeDuplicates(arr7));
-        System.out.println(removeDuplicates(arr8));
+//        System.out.println(removeDuplicates(arr7));
+//        System.out.println(removeDuplicates(arr8));
+        int[] arr9 = {3,2,2,3};
+        int[] arr10 = {0,1,2,2,3,0,4,2};
+        System.out.println(removeElement(arr9,3));
+        System.out.println(removeElement(arr10,2));
     }
 
     public static String restoreString (String s, int[] indices) {
@@ -36,9 +40,7 @@ public class App {
     }
 
     public static int[] twoSum(int[] nums, int target) {
-
         int[] arr = new int[2];
-
 //        for (int i = 0; i <= nums.length; i++) {
 //            for (int j = i+1; j < nums.length; j++) {
 //                if (nums[i] + nums[j] == target){
@@ -48,9 +50,7 @@ public class App {
 //                }
 //            }
 //        }
-
         HashMap<Integer,Integer> map = new HashMap<>();
-
         for (int i = 0; i < nums.length; i++) {
             if (!map.containsKey(target-nums[i])) {
                 map.put(nums[i] , i);
@@ -59,7 +59,6 @@ public class App {
                     arr[1] = i;
             }
         }
-        
         return arr;
     }
 
@@ -111,8 +110,19 @@ public class App {
                 idx++;
             }
         }
-        System.out.println(Arrays.toString(nums));
         return idx;
     }
+
+    public static int removeElement(int[] nums, int val) {
+        int idx = 0 ;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != val){
+                nums[idx] = nums[i];
+                idx++;
+            }
+        }
+        return idx;
+    }
+
 
 }
