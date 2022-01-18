@@ -3,8 +3,10 @@
  */
 package leetcode;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 public class App {
 
@@ -32,10 +34,24 @@ public class App {
         int[] arr11 = {4,5,6,7,0,1,2};
         int[] arr12 = {4,5,6,7,0,1,2};
         int[] arr13 = {1};
-        System.out.println(search(arr11, 0));
-        System.out.println(search(arr12, 3));
-        System.out.println(search(arr13, 0));
+//        System.out.println(search(arr11, 0));
+//        System.out.println(search(arr12, 3));
+//        System.out.println(search(arr13, 0));
+        int[] arr14 = {1,2,4,7,9,10,13};
+//        System.out.println(searchInsert(arr14, 8));
+        int[] arr15 = {9,9,9,9,9,9};
+        int[] arr16 = {1,2,9,9};
+//        System.out.println(Arrays.toString(plusOne(arr15)));
+//        System.out.println(Arrays.toString(plusOne(arr16)));
+        int[] arr17 = {1,2,3,0,0,0};
+        int[] arr18 = {2,5,6};
+        int[] arr19 = {2,0};
+        int[] arr20 = {1};
+//        merge(arr17,3,arr18,3);
+//        merge(arr19,1,arr20,1);
+        System.out.println(generate(5).toString());
     }
+
 
     public static String restoreString (String s, int[] indices) {
         char[] arr = new char[indices.length];
@@ -145,4 +161,86 @@ public class App {
         return -1;
     }
 
+    public static int searchInsert(int[] nums, int target) {
+        if (target < nums[0]) {
+            return 0;
+        }
+        if (target > nums[nums.length - 1]) {
+            return nums.length;
+        }
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == target || nums[i] > target) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public static int[] plusOne(int[] digits) {
+        if (digits[digits.length - 1] < 9) {
+            digits[digits.length - 1] = digits[digits.length - 1] + 1;
+        } else {
+            for (int i = digits.length - 1; i >= 0; i--) {
+                if (digits[i] == 9) {
+                    digits[i] = 0;
+                } else {
+                    digits[i] = digits[i] + 1;
+                    break;
+                }
+                if (i == 0) {
+                    int[] newArr = new int[digits.length+1];
+                    newArr[0] = 1;
+                    for (int j = 1; j < newArr.length; j++) {
+                        newArr[j] = 0;
+                    }
+                    return newArr;
+                }
+            }
+        }
+        return digits;
+    }
+//    merge(arr19,1,arr20,1); // {2,0} // {1}
+    public static void merge(int[] nums1, int m, int[] nums2, int n) {
+        if (nums2.length == 0) return;
+        if (nums1.length == n) {
+            System.arraycopy(nums2, 0, nums1, 0, nums1.length);
+        } else {
+            int idx2 = 0;
+            for (int i = 0; i < nums1.length; i++) {
+                if (idx2 == nums2.length) break;
+                if (nums1[i] == 0 && i >= m + idx2) {
+                    nums1[i] = nums2[idx2];
+                    idx2++;
+                } else if (nums2[idx2] < nums1[i]) {
+                    for (int j = m + idx2; j > i; j--) {
+                        nums1[j] = nums1[j - 1];
+                    }
+                    nums1[i] = nums2[idx2];
+                    idx2++;
+                }
+            }
+        }
+        System.out.println(Arrays.toString(nums1));
+    }
+
+    public static List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> list = new ArrayList<List<Integer>>();
+        List<Integer> innerList = new ArrayList<>();
+        innerList.add(1);
+        list.add(innerList);
+        for (int i = 1; i < numRows; i++) {
+            List<Integer> newInnerList = new ArrayList<>();
+            newInnerList.add(1);
+            for (int j = 1; j <= i; j++) {
+                if (j == i) {
+                    newInnerList.add(1);
+                } else {
+                    Integer x = list.get(i - 1).get(j-1) + list.get(i - 1).get(j);
+                    newInnerList.add(x);
+                }
+            }
+            list.add(newInnerList);
+        }
+        return list;
+    }
 }
