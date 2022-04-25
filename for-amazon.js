@@ -1,10 +1,3 @@
-var reverseWords = function (s) {
-  return (newStr = s.split(" ").reverse().join(" "));
-};
-
-// console.log(reverseWords("hello world"));
-// console.log(reverseWords("hello    world"));
-
 let longestPalindrome = function (s) {
   if (s.length && s.length < 2) {
     return s;
