@@ -9,9 +9,21 @@ public class App {
 
     public static void main(String[] args) {
 
-        cachingByLinkedList();
+//        cachingByLinkedList();
 
-        Queue<String> chaching = new LinkedList<>();
+
+        int[] array = { 1, 2, 3, 4, 5 };
+        int size = 3;
+        System.out.println("===============================================================");
+
+        int[] part = new int[size];
+         System.arraycopy(array, 0, part, 0, size);
+
+//         part.clone();
+
+        System.out.println(Arrays.toString(part));
+
+        System.out.println("===============================================================");
 
 
     }

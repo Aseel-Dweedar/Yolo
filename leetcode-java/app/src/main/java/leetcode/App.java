@@ -49,7 +49,41 @@ public class App {
         int[] arr20 = {1};
 //        merge(arr17,3,arr18,3);
 //        merge(arr19,1,arr20,1);
-        System.out.println(generate(5).toString());
+//        System.out.println(generate(5).toString());
+
+        ListNode l3 = new ListNode(3);
+        ListNode l2 = new ListNode(2,l3);
+        ListNode l1 = new ListNode(1,l2);
+
+        addTwoNumbers(l1,l1);
+
+    }
+
+    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+
+        int carryOver = 0;
+        ListNode temp = l1;
+
+        while (l1 != null || l2 != null) {
+            int sum = l1.val + l2.val + carryOver;
+            l1.val = ;
+            if (sum > 9 &&  ) {
+
+            }
+
+//            System.out.println(l1.val);
+//            System.out.println();
+//            System.out.println(l2.val);
+            l1 = l1.next;
+            l2 = l2.next;
+        }
+
+        while (temp != null) {
+            System.out.println(temp.val);
+            temp = temp.next;
+        }
+
+        return temp;
     }
 
 
